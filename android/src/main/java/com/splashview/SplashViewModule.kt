@@ -1,8 +1,5 @@
 package com.splashview
 
-import android.app.Dialog
-import android.view.LayoutInflater
-import android.view.View
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.module.annotations.ReactModule
 
