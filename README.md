@@ -12,7 +12,6 @@ Here’s the updated **GitHub README** including the required **Android XML setu
 
 ## **✨ Features**  
 ✅ Show and hide splash screen programmatically  
-✅ Customizable animations  
 ✅ Lightweight and fast  
 ✅ Supports both iOS and Android  
 
@@ -65,6 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+
+    //Add below method in AppDelegate.swift
 
     private func showSplashScreen() {
         DispatchQueue.main.async {
