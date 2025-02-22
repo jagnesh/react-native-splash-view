@@ -6,4 +6,8 @@
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
     </style>
 
+  <style name="SplashViewTheme" parent="Theme.AppCompat.NoActionBar">
+    <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>
 </resources>

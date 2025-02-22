@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SplashViewExample</string>
+    <string name="splash_text">React Native Splash View</string>
 </resources>
