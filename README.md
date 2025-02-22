@@ -1,6 +1,4 @@
-Here’s the updated **GitHub README** including the required **Android XML setup** and **iOS storyboard setup**.  
 
----
 
 # **📖 react-native-splash-view**  
 *A lightweight and customizable splash screen module for React Native.*
