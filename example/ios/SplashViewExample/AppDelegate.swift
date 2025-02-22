@@ -13,8 +13,24 @@ class AppDelegate: RCTAppDelegate {
     // They will be passed down to the ViewController used by React Native.
     self.initialProps = [:]
 
+    showSplashScreen()
+    
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+  
+  private func showSplashScreen() {
+      DispatchQueue.main.async {
+          if let splashClass = NSClassFromString("SplashView") as? NSObject.Type,
+             let splashInstance = splashClass.perform(NSSelectorFromString("sharedInstance"))?.takeUnretainedValue() as? NSObject {
+              splashInstance.perform(NSSelectorFromString("showSplash"))
+              print("✅ Splash Screen Shown Successfully")
+          } else {
+              print("⚠️ SplashView module not found")
+          }
+      }
+  }
+
+
 
   override func sourceURL(for bridge: RCTBridge) -> URL? {
     self.bundleURL()
