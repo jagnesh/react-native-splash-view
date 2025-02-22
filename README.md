@@ -187,4 +187,3 @@ This project is licensed under the **MIT License**.
 
 ---
 
-Now, the README includes both **iOS (Storyboard setup)** and **Android (launch XML & theme support)**! 🚀 Let me know if you need any modifications. 🎯
