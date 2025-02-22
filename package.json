@@ -48,7 +48,15 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "react-native-component",
+    "react-native-splash-screen",
+    "splash-screen",
+    "splashscreen",
+    "splash",
+    "launch-screen",
+    "launchscreen",
+    "react-native-splash-view"
   ],
   "repository": {
     "type": "git",
