@@ -6,7 +6,7 @@ module.exports = {
     platforms: {
       android: {
         cmakeListsPath: 'generated/jni/CMakeLists.txt',
-        packageImportPath: 'com.splashview.SplashViewPackage;',
+        packageImportPath: 'com.splashview',
         packageInstance: 'new SplashViewPackage()',
       },
     },
