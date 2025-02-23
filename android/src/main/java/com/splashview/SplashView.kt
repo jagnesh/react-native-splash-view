@@ -5,9 +5,7 @@ import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.View
 
-public  class SplashView {
-
-  companion object {
+object SplashView {
     private var splashDialog: Dialog? = null
     fun showSplashView(activity: Activity) {
 
@@ -32,7 +30,5 @@ public  class SplashView {
       splashDialog?.dismiss()
       splashDialog = null
     }
-
-  }
 
 }
