@@ -13,7 +13,14 @@
 ✅ Lightweight and fast  
 ✅ Supports both iOS and Android  
 
+
 ---
+### Demo Video
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/7OAoN9VlYCg/0.jpg)](https://www.youtube.com/watch?v=7OAoN9VlYCg)
+
+---
+
 
 ## **📦 Installation**  
 
@@ -201,7 +208,6 @@ npx react-native run-android
 ```
 
 ---
-
 ## **💡 Contributing**  
 Feel free to open issues and pull requests! Contributions are welcome.  
 
