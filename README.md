@@ -36,15 +36,15 @@ yarn add react-native-splash-view
 ```sh
 cd ios && pod install --repo-update && cd ..
 ```
-2️⃣ Ensure `SplashView` is correctly linked in **Development Pods** in Xcode.  
+2️⃣ Ensure `SplashView` is correctly linked.  
 
 3️⃣ **Create a Storyboard for Splash Screen**:  
 - Open **Xcode** and go to the **LaunchScreen.storyboard** file.  
 - Ensure the **Storyboard Name** is set as `LaunchScreen`.  
 - This will be used as the splash screen when the app starts.  
 
-4️⃣ **Modify `AppDelegate.swift`** to show the splash screen programmatically:  
-
+4️⃣ **Modify `AppDelegate`** to show the splash screen programmatically:  
+### If you are using swift update AppDelegate.swift 
 ```swift
 import UIKit
 
@@ -75,7 +75,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 ```
+### If you are using Obj C update AppDelegate.m or AppDelegate.mm 
+```objc
 
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  self.moduleName = @"yourapp";
+  self.initialProps = @{};
+
+  [self showSplashScreen]; // Call the method to display the splash screen
+ 
+  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+// Add this method to AppDelegate.m
+- (void)showSplashScreen {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        Class splashClass = NSClassFromString(@"SplashView");
+        if (splashClass) {
+            id splashInstance = [splashClass performSelector:NSSelectorFromString(@"sharedInstance")];
+            if (splashInstance && [splashInstance respondsToSelector:NSSelectorFromString(@"showSplash")]) {
+                [splashInstance performSelector:NSSelectorFromString(@"showSplash")];
+            }
+        }
+    });
+}
+```
 ---
 
 ### **🤖 Android Setup**  
