@@ -72,7 +72,7 @@ body:
     id: platforms
     attributes:
       label: Platforms
-      description: On what platform your application is running on?
+      description: On what platform is your application running on?
       multiple: true
       options:
         - Android
@@ -83,16 +83,16 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Additonal information
+        ## Additional information
 
-        Providing as much information as possible greatly helps us with reproducting the issues.
+        Providing as much information as possible greatly helps us with reproducing the issues.
 
 
   - type: dropdown
     id: architecture
     attributes:
       label: Architecture
-      description: What React Native architecture your application is running on? Currently, the default architecture on React Native is Paper so if you haven't changed it in your application select this option.
+      description: What React Native architecture is your application running on? 
       options:
         - Paper (Old Architecture)
         - Fabric (New Architecture)
@@ -101,7 +101,7 @@ body:
     id: build-type
     attributes:
       label: Build type
-      description: What mode your application is running?
+      description: What mode is your application running?
       options:
         - Debug mode
         - Release mode
@@ -120,7 +120,7 @@ body:
     id: device-model
     attributes:
       label: Device model
-      description: What device you are experiencing this problem on? Specify full device name along with the version of the operating system it's running.
+      description: What device are you experiencing this problem on? Specify full device name along with the version of the operating system it's running.
       placeholder: ex. Samsung Galaxy A22 (Android 12)
 
     validations:
