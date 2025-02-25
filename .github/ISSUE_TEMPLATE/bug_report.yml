@@ -12,7 +12,7 @@ body:
         - Make sure to clean cache in your project. Depending on your setup this could be done by:
           - `yarn start --reset-cache` or
           - `npm start -- --reset-cache` or
-          - `expo start --clear`
+    
 
   - type: markdown
     attributes:
@@ -77,8 +77,6 @@ body:
       options:
         - Android
         - iOS
-        - Web
-        - MacOS
     validations:
       required: true
 
@@ -99,15 +97,6 @@ body:
         - Hermes
         - V8
 
-  - type: dropdown
-    id: workflow
-    attributes:
-      label: Workflow
-      description: How your application is managed? Not sure? Read [this part](https://docs.expo.dev/introduction/managed-vs-bare/) of Expo documentation
-      options:
-        - React Native (without Expo)
-        - Expo bare workflow
-        - Expo managed workflow
 
   - type: dropdown
     id: architecture
@@ -144,12 +133,5 @@ body:
       description: What device you are experiencing this problem on? Specify full device name along with the version of the operating system it's running.
       placeholder: ex. Samsung Galaxy A22 (Android 12)
 
-  - type: dropdown
-    id: acknowledgements
-    attributes:
-      label: Acknowledgements
-      description: I searched for similar issues in the repository.
-      options:
-        - 'Yes'
     validations:
       required: true
