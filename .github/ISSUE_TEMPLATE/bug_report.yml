@@ -87,16 +87,6 @@ body:
 
         Providing as much information as possible greatly helps us with reproducting the issues.
 
-  - type: dropdown
-    id: runtime
-    attributes:
-      label: JavaScript runtime
-      description: What runtime is your application using?
-      options:
-        - JSC
-        - Hermes
-        - V8
-
 
   - type: dropdown
     id: architecture
