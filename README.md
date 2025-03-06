@@ -1,7 +1,7 @@
 
 
 # **📖 react-native-splash-view**  
-*A lightweight and customizable splash screen module for React Native.*
+A lightweight and customizable splash screen module for React Native.
 
 ![npm version](https://img.shields.io/npm/v/react-native-splash-view)  
 ![License](https://img.shields.io/github/license/jagnesh/react-native-splash-view)  
@@ -135,13 +135,14 @@ Create the file **`android/app/src/main/res/layout/launch_screen.xml`** with the
 🔹 Replace `@drawable/splash_logo` with your splash screen logo.  
 
 #### **2️⃣ Optionally, Define a Custom Theme**  
-You can specify a theme in `android/app/src/main/res/values/styles.xml`  
+You can specify a theme in `android/app/src/main/res/values/styles.xml` and style name should be `SplashViewTheme`. 
 
 ```xml
 <resources>
-    <style name="SplashViewTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/launch_screen</item>
-    </style>
+  <style name="SplashViewTheme" parent="Theme.AppCompat.NoActionBar">
+    <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    <item name="android:windowLightStatusBar">true</item>
+  </style>
 </resources>
 ```
 
