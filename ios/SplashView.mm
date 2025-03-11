@@ -17,7 +17,7 @@ UIViewController *loadedViewController = nil;  // Keep track of the loaded splas
     return sharedInstance;
 }
 
-- (void)showSplash {
+RCT_EXPORT_METHOD(showSplash) {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (splashWindow) {
             NSLog(@"⚠️ Splash already visible");
@@ -59,7 +59,7 @@ UIViewController *loadedViewController = nil;  // Keep track of the loaded splas
     });
 }
 
-- (void)hideSplash {
+RCT_EXPORT_METHOD(hideSplash) {
 
     dispatch_async(dispatch_get_main_queue(), ^{
         if (splashWindow) {
