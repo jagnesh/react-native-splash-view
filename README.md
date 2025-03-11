@@ -3,8 +3,8 @@
 # **📖 react-native-splash-view**  
 A lightweight and customizable splash screen module for React Native.
 
-![npm version](https://img.shields.io/npm/v/react-native-splash-view)  
-![License](https://img.shields.io/github/license/jagnesh/react-native-splash-view)  
+[![npm version](https://img.shields.io/npm/v/react-native-splash-view)](https://www.npmjs.com/package/react-native-splash-view)
+[![License](https://img.shields.io/github/license/jagnesh/react-native-splash-view)](https://github.com/jagnesh/react-native-splash-view?tab=MIT-1-ov-file#readme) 
 
 ---
 
