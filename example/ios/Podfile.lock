@@ -1500,7 +1500,7 @@ PODS:
     - React-perflogger (= 0.77.1)
     - React-utils (= 0.77.1)
   - SocketRocket (0.7.1)
-  - SplashView (0.1.0):
+  - SplashView (0.0.10):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1802,7 +1802,7 @@ SPEC CHECKSUMS:
   ReactCodegen: 8c6710db5ccee603fa0475978465b606abe1ed77
   ReactCommon: 8da6c58517fa560d0fc7a9da83093457303ae9f8
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  SplashView: b6a81634605bcf999bd52a50e8b5fd05dffc0410
+  SplashView: 82305f321c06e05f30f3ac3e56393125fa292448
   Yoga: 2957d0e744897870b5a377f26522e3f08cadd7ac
 
 PODFILE CHECKSUM: a47ffb2ce1397ce664e7e96e986ed5d6caf658a1
