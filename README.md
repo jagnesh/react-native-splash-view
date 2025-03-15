@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ### **🤖 Android Setup**  
 
 #### **1️⃣ Create `launch_screen.xml` for Splash Screen**  
-Create the file **`android/app/src/main/res/layout/launch_screen.xml`** with the following content:  
+Create the file **`android/app/src/main/res/layout/launch_screen.xml`** as per requirement:  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -132,7 +132,6 @@ Create the file **`android/app/src/main/res/layout/launch_screen.xml`** with the
 
 </FrameLayout>
 ```
-🔹 Replace `@drawable/splash_logo` with your splash screen logo.  
 
 #### **2️⃣ Optionally, Define a Custom Theme**  
 You can specify a theme in `android/app/src/main/res/values/styles.xml` and style name should be `SplashViewTheme`. 
@@ -174,11 +173,13 @@ class MainActivity : ReactActivity() {
 import { hideSplash, showSplash } from 'react-native-splash-view';
 
 
-showSplash(); // Show the splash screen
+showSplash(); // Show the splash screen (If you don't want to start it from native side)
 
-setTimeout(() => {
-  hideSplash(); // Hide after some time
-}, 3000);
+useEffect(() => {
+    setTimeout(() => {
+      hideSplash(); // Hide after some time
+    }, 5000);
+}, []);
 ```
 
 ---
