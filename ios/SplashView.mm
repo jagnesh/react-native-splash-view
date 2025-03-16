@@ -38,7 +38,7 @@ RCT_EXPORT_METHOD(showSplash) {
         // Get active window scene (for iOS 13+)
         UIWindowScene *windowScene = nil;
         for (UIScene *scene in UIApplication.sharedApplication.connectedScenes) {
-            if (scene.activationState == UISceneActivationStateForegroundActive) {
+            if (scene.activationState == UISceneActivationStateForegroundActive || scene.activationState == UISceneActivationStateForegroundInactive) {
                 windowScene = (UIWindowScene *)scene;
                 break;
             }
