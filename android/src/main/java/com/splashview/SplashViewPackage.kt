@@ -1,33 +1,36 @@
 package com.splashview
 
-import com.facebook.react.BaseReactPackage
+import com.facebook.react.ReactPackage
 import com.facebook.react.bridge.NativeModule
 import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.module.model.ReactModuleInfo
-import com.facebook.react.module.model.ReactModuleInfoProvider
-import java.util.HashMap
+import com.facebook.react.uimanager.ViewManager
 
-class SplashViewPackage : BaseReactPackage() {
-  override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == SplashViewModule.NAME) {
-      SplashViewModule(reactContext)
+class SplashViewPackage : ReactPackage {
+  override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
+    val modules = mutableListOf<NativeModule>()
+
+    if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
+      try {
+        val clazz = Class.forName("com.splashview.SplashViewModuleNew")
+        val ctor = clazz.getConstructor(ReactApplicationContext::class.java)
+        modules.add(ctor.newInstance(reactContext) as NativeModule)
+      } catch (e: Exception) {
+        e.printStackTrace()
+      }
     } else {
-      null
+      try {
+        val clazz = Class.forName("com.splashview.SplashViewModuleOld")
+        val ctor = clazz.getConstructor(ReactApplicationContext::class.java)
+        modules.add(ctor.newInstance(reactContext) as NativeModule)
+      } catch (e: Exception) {
+        e.printStackTrace()
+      }
     }
+
+    return modules
   }
 
-  override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
-    return ReactModuleInfoProvider {
-      val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      moduleInfos[SplashViewModule.NAME] = ReactModuleInfo(
-        SplashViewModule.NAME,
-        SplashViewModule.NAME,
-        false,  // canOverrideExistingModule
-        false,  // needsEagerInit
-        false,  // isCxxModule
-        true // isTurboModule
-      )
-      moduleInfos
-    }
+  override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
+    return emptyList()
   }
 }

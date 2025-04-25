@@ -3,21 +3,18 @@ package com.splashview
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.module.annotations.ReactModule
 
-@ReactModule(name = SplashViewModule.NAME)
-class SplashViewModule(reactContext: ReactApplicationContext) :
+@ReactModule(name = SplashViewModuleNew.NAME)
+class SplashViewModuleNew(reactContext: ReactApplicationContext) :
   NativeSplashViewSpec(reactContext) {
 
-  override fun getName(): String {
-    return NAME
-  }
+  override fun getName() = NAME
 
   override fun showSplash() {
-    val activity = currentActivity ?: return // Get current activity safely
-    SplashView.showSplashView(activity)
+    currentActivity?.let { SplashView.showSplashView(it) }
   }
 
   override fun hideSplash() {
-   SplashView.hideSplashView()
+    SplashView.hideSplashView()
   }
 
   companion object {
