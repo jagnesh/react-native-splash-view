@@ -209,6 +209,55 @@ cd android && ./gradlew clean && cd ..
 npx react-native run-android
 ```
 
+## **🛠️ Patch for React Native 0.75.x and Below**
+
+If you're using **React Native 0.75.x or below**, you may face issues with `EventEmitterCallback` in the `react-native-splash-view` package due to TurboModule compatibility changes. You can apply a patch to make it work.
+
+### **Steps to Patch**
+
+1. **Install `patch-package`**:
+
+   ```sh
+   npm install patch-package --save-dev
+   ```
+
+   Or with Yarn:
+
+   ```sh
+   yarn add patch-package --dev
+   ```
+
+2. **Update `package.json`**
+   Add this to the `scripts` section:
+
+   ```json
+   "scripts": {
+     "postinstall": "patch-package"
+   }
+   ```
+
+3. **Download and Place the Patch File**
+   Download the patch file from the following link:
+   [react-native-splash-view+0.0.15.patch](https://github.com/jagnesh/react-native-splash-view/blob/main/react-native-splash-view+0.0.15.patch)
+
+   Once downloaded, place it in the root of your project under the `patches/` folder. You may need to create the `patches/` folder if it doesn't already exist. The file structure should look like this:
+
+   ```
+   /your-project-root
+   ├── patches/
+   │   └── react-native-splash-view+0.0.15.patch
+   └── package.json
+   ```
+
+4. **Apply the Patch**
+   After placing the patch file in the `patches/` folder, run:
+
+   ```sh
+   npx patch-package react-native-splash-view
+   ```
+
+   This will apply the patch and fix issues related to **React Native 0.75.x and below**.
+
 ---
 ## **💡 Contributing**  
 Feel free to open issues and pull requests! Contributions are welcome.  
