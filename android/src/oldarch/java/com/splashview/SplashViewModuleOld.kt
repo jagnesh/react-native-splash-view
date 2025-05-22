@@ -16,7 +16,7 @@ class SplashViewModuleOld(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun hideSplash() {
-    SplashView.hideSplashView()
+    currentActivity?.let { SplashView.hideSplashView(it) }
   }
 
   companion object {
