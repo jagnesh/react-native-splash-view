@@ -63,14 +63,16 @@ RCT_EXPORT_METHOD(hideSplash) {
 
     dispatch_async(dispatch_get_main_queue(), ^{
         if (splashWindow) {
-            [UIView animateWithDuration:0.5 animations:^{
-                splashWindow.rootViewController.view.alpha = 0.0;
-            } completion:^(BOOL finished) {
-                splashWindow.hidden = YES;
-                splashWindow = nil;
-                loadedViewController = nil;
-                NSLog(@"✅ Splash Screen Hidden with fade");
-            }];
+          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+               [UIView animateWithDuration:0. animations:^{
+                   splashWindow.rootViewController.view.alpha = 0.0;
+               } completion:^(BOOL finished) {
+                   splashWindow.hidden = YES;
+                   splashWindow = nil;
+                   loadedViewController = nil;
+                   NSLog(@"✅ Splash Screen Hidden with fade");
+               }];
+           });
         } else {
             NSLog(@"⚠️ No active splash window found");
         }
