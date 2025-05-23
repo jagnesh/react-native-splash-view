@@ -56,8 +56,22 @@ object SplashView {
   }
 
 
-  fun hideSplashView() {
-    splashDialog?.takeIf { it.isShowing }?.dismiss()
+  fun hideSplashView(activity: Activity?) {
+    val dialog = splashDialog
+
+    // Defensive checks to avoid crash
+    if (dialog != null && dialog.isShowing) {
+        val context = dialog.context
+        if (context is Activity && !context.isFinishing && !context.isDestroyed) {
+            try {
+                dialog.dismiss()
+            } catch (e: IllegalArgumentException) {
+                // View not attached to window manager - ignore
+                e.printStackTrace()
+            }
+        }
+    }
+
     splashDialog = null
   }
 }

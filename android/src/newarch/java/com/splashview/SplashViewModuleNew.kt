@@ -14,7 +14,7 @@ class SplashViewModuleNew(reactContext: ReactApplicationContext) :
   }
 
   override fun hideSplash() {
-    SplashView.hideSplashView()
+    currentActivity?.let { SplashView.hideSplashView(it) }
   }
 
   companion object {
