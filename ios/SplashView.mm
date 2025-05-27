@@ -18,53 +18,20 @@ UIViewController *loadedViewController = nil;  // Keep track of the loaded splas
 }
 
 RCT_EXPORT_METHOD(showSplash) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (splashWindow) {
-            NSLog(@"⚠️ Splash already visible");
-            return;
-        }
-
-        // Load LaunchScreen.storyboard
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
-        UIViewController *viewController = [storyboard instantiateInitialViewController];
-
-        if (!viewController) {
-            NSLog(@"❌ Failed to load LaunchScreen");
-            return;
-        }
-
-        loadedViewController = viewController;
-
-        // Get active window scene (for iOS 13+)
-        UIWindowScene *windowScene = nil;
-        for (UIScene *scene in UIApplication.sharedApplication.connectedScenes) {
-            if (scene.activationState == UISceneActivationStateForegroundActive || scene.activationState == UISceneActivationStateForegroundInactive) {
-                windowScene = (UIWindowScene *)scene;
-                break;
-            }
-        }
-
-        if (!windowScene) {
-            NSLog(@"❌ No active window scene found");
-            return;
-        }
-
-        // Create a new overlay window to ensure splash screen stays on top
-        splashWindow = [[UIWindow alloc] initWithFrame:windowScene.coordinateSpace.bounds];
-        splashWindow.windowScene = windowScene;
-        splashWindow.windowLevel = UIWindowLevelAlert + 1; // Always on top
-        splashWindow.rootViewController = viewController;
-        splashWindow.hidden = NO;
-
-    });
+    if ([NSThread isMainThread]) {
+        [self showSplashScreen];
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self showSplashScreen];
+        });
+    }
 }
 
 RCT_EXPORT_METHOD(hideSplash) {
-
     dispatch_async(dispatch_get_main_queue(), ^{
         if (splashWindow) {
           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-               [UIView animateWithDuration:0. animations:^{
+               [UIView animateWithDuration:0.3 animations:^{
                    splashWindow.rootViewController.view.alpha = 0.0;
                } completion:^(BOOL finished) {
                    splashWindow.hidden = YES;
@@ -77,6 +44,46 @@ RCT_EXPORT_METHOD(hideSplash) {
             NSLog(@"⚠️ No active splash window found");
         }
     });
+}
+
+- (void)showSplashScreen {
+    if (splashWindow) {
+        NSLog(@"⚠️ Splash already visible");
+        return;
+    }
+
+    // Load LaunchScreen.storyboard
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
+    UIViewController *viewController = [storyboard instantiateInitialViewController];
+
+    if (!viewController) {
+        NSLog(@"❌ Failed to load LaunchScreen");
+        return;
+    }
+
+    loadedViewController = viewController;
+
+    // Get active window scene (for iOS 13+)
+    UIWindowScene *windowScene = nil;
+    for (UIScene *scene in UIApplication.sharedApplication.connectedScenes) {
+        if (scene.activationState == UISceneActivationStateForegroundActive ||
+            scene.activationState == UISceneActivationStateForegroundInactive) {
+            windowScene = (UIWindowScene *)scene;
+            break;
+        }
+    }
+
+    if (!windowScene) {
+        NSLog(@"❌ No active window scene found");
+        return;
+    }
+
+    // Create a new overlay window to ensure splash screen stays on top
+    splashWindow = [[UIWindow alloc] initWithFrame:windowScene.coordinateSpace.bounds];
+    splashWindow.windowScene = windowScene;
+    splashWindow.windowLevel = UIWindowLevelAlert + 1; // Always on top
+    splashWindow.rootViewController = viewController;
+    splashWindow.hidden = NO;
 }
 
 // React Native TurboModule integration

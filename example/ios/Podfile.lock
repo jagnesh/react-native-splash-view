@@ -1500,7 +1500,7 @@ PODS:
     - React-perflogger (= 0.77.1)
     - React-utils (= 0.77.1)
   - SocketRocket (0.7.1)
-  - SplashView (0.0.13):
+  - SplashView (0.0.17):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1743,7 +1743,7 @@ SPEC CHECKSUMS:
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: eb93e2f488219332457c3c4eafd2738ddc7e80b8
   hermes-engine: ccc24d29d650ea725d582a9a53d57cd417fbdb53
-  RCT-Folly: 36fe2295e44b10d831836cc0d1daec5f8abcf809
+  RCT-Folly: e78785aa9ba2ed998ea4151e314036f6c49e6d82
   RCTDeprecation: 664055db806cce35c3c1b43c84414dd66e117ae6
   RCTRequired: dc9a83fa1012054f94430d210337ca3a1afe6fc0
   RCTTypeSafety: 031cefa254a1df313a196f105b8fcffdab1c5ab6
@@ -1802,8 +1802,8 @@ SPEC CHECKSUMS:
   ReactCodegen: d9a09a7f7eee93f54d0b4135d5ca66b31b0c42a5
   ReactCommon: 08f4808f02ff115884e870e5cfea689703ff759a
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  SplashView: 86d79b6539cc36371834a07f8a8c7c6c3f40dd7a
-  Yoga: 2957d0e744897870b5a377f26522e3f08cadd7ac
+  SplashView: dc16ad6490524d105bd0e9927d43685586c62df1
+  Yoga: 1fd059161b449018342943b095a6d4e69bcaa719
 
 PODFILE CHECKSUM: a47ffb2ce1397ce664e7e96e986ed5d6caf658a1
 
