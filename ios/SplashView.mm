@@ -27,24 +27,6 @@ RCT_EXPORT_METHOD(showSplash) {
     }
 }
 
-RCT_EXPORT_METHOD(hideSplash) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (splashWindow) {
-          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-               [UIView animateWithDuration:0.3 animations:^{
-                   splashWindow.rootViewController.view.alpha = 0.0;
-               } completion:^(BOOL finished) {
-                   splashWindow.hidden = YES;
-                   splashWindow = nil;
-                   loadedViewController = nil;
-                   NSLog(@"✅ Splash Screen Hidden with fade");
-               }];
-           });
-        } else {
-            NSLog(@"⚠️ No active splash window found");
-        }
-    });
-}
 
 - (void)showSplashScreen {
     if (splashWindow) {
@@ -84,6 +66,26 @@ RCT_EXPORT_METHOD(hideSplash) {
     splashWindow.windowLevel = UIWindowLevelAlert + 1; // Always on top
     splashWindow.rootViewController = viewController;
     splashWindow.hidden = NO;
+}
+
+RCT_EXPORT_METHOD(hideSplash) {
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (splashWindow) {
+          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+               [UIView animateWithDuration:0.3 animations:^{
+                   splashWindow.rootViewController.view.alpha = 0.0;
+               } completion:^(BOOL finished) {
+                   splashWindow.hidden = YES;
+                   splashWindow = nil;
+                   loadedViewController = nil;
+                   NSLog(@"✅ Splash Screen Hidden with fade");
+               }];
+           });
+        } else {
+            NSLog(@"⚠️ No active splash window found");
+        }
+    });
 }
 
 // React Native TurboModule integration

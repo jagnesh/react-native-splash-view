@@ -14,18 +14,18 @@ class AppDelegate: RCTAppDelegate {
     self.initialProps = [:]
 
     showSplashScreen()
-    
+
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
-  
+
   private func showSplashScreen() {
-          if let splashClass = NSClassFromString("SplashView") as? NSObject.Type,
-             let splashInstance = splashClass.perform(NSSelectorFromString("sharedInstance"))?.takeUnretainedValue() as? NSObject {
-              splashInstance.perform(NSSelectorFromString("showSplash"))
-              print("✅ Splash Screen Shown Successfully")
-          } else {
-              print("⚠️ SplashView module not found")
-          }
+      if let splashClass = NSClassFromString("SplashView") as? NSObject.Type,
+          let splashInstance = splashClass.perform(NSSelectorFromString("sharedInstance"))?.takeUnretainedValue() as? NSObject {
+          splashInstance.perform(NSSelectorFromString("showSplash"))
+          print("✅ Splash Screen Shown Successfully")
+      } else {
+          print("⚠️ SplashView module not found")
+      }
   }
 
 

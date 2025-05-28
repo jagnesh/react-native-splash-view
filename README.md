@@ -71,13 +71,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     //Add below method in AppDelegate.swift
-
     private func showSplashScreen() {
-            if let splashClass = NSClassFromString("SplashView") as? NSObject.Type,
-               let splashInstance = splashClass.perform(NSSelectorFromString("sharedInstance"))?.takeUnretainedValue() as? NSObject {
-                splashInstance.perform(NSSelectorFromString("showSplash"))
-            }
-        }
+      if let splashClass = NSClassFromString("SplashView") as? NSObject.Type,
+          let splashInstance = splashClass.perform(NSSelectorFromString("sharedInstance"))?.takeUnretainedValue() as? NSObject {
+          splashInstance.perform(NSSelectorFromString("showSplash"))
+          print("✅ Splash Screen Shown Successfully")
+      } else {
+          print("⚠️ SplashView module not found")
+      }
+    }
+
 }
 ```
 ### If you are using Obj C update AppDelegate.m or AppDelegate.mm
@@ -97,13 +100,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // Add this method to AppDelegate.m
 - (void)showSplashScreen {
-        Class splashClass = NSClassFromString(@"SplashView");
-        if (splashClass) {
-            id splashInstance = [splashClass performSelector:NSSelectorFromString(@"sharedInstance")];
-            if (splashInstance && [splashInstance respondsToSelector:NSSelectorFromString(@"showSplash")]) {
-                [splashInstance performSelector:NSSelectorFromString(@"showSplash")];
-            }
+    Class splashClass = NSClassFromString(@"SplashView");
+    if (splashClass) {
+        id splashInstance = [splashClass performSelector:NSSelectorFromString(@"sharedInstance")];
+        if (splashInstance && [splashInstance respondsToSelector:NSSelectorFromString(@"showSplash")]) {
+            [splashInstance performSelector:NSSelectorFromString(@"showSplash")];
         }
+    }
 }
 ```
 ---
