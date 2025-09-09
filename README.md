@@ -150,9 +150,9 @@ Update **`MainActivity.kt`** to display the splash screen on launch:
 ```kotlin
 package com.example
 
-import android.os.Bundle
+import android.os.Bundle // <-- Add this
 import com.facebook.react.ReactActivity
-import com.splashview.SplashView
+import com.splashview.SplashView // <-- Add this
 
 class MainActivity : ReactActivity() {
 
