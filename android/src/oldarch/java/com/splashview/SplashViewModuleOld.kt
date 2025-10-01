@@ -11,7 +11,7 @@ class SplashViewModuleOld(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun showSplash() {
-    currentActivity?.let { SplashView.showSplashView(it) }
+    reactApplicationContext.currentActivity?.let { SplashView.showSplashView(it) }
   }
 
   @ReactMethod
