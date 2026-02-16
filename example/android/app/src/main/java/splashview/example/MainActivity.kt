@@ -16,8 +16,8 @@ class MainActivity : ReactActivity() {
   override fun getMainComponentName(): String = "SplashViewExample"
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    SplashView.showSplashView(this)
     super.onCreate(savedInstanceState)
+    SplashView.showSplashView(this)    
   }
 
   /**

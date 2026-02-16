@@ -1,57 +1,64 @@
+# **📖 react-native-splash-view**
 
-
-# **📖 react-native-splash-view**  
 A lightweight and customizable splash screen module for React Native.
 
 [![npm version](https://img.shields.io/npm/v/react-native-splash-view)](https://www.npmjs.com/package/react-native-splash-view)
-[![License](https://img.shields.io/github/license/jagnesh/react-native-splash-view)](https://github.com/jagnesh/react-native-splash-view?tab=MIT-1-ov-file#readme) 
+[![License](https://img.shields.io/github/license/jagnesh/react-native-splash-view)](https://github.com/jagnesh/react-native-splash-view?tab=MIT-1-ov-file#readme)
 
 ---
 
-## **✨ Features**  
+## **✨ Features**
+
 ✅ Show and hide splash screen programmatically  
 ✅ Lightweight and fast  
-✅ Supports both iOS and Android  
-
+✅ Supports both iOS and Android
 
 ---
+
 ### Demo Video
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/7OAoN9VlYCg/0.jpg)](https://www.youtube.com/watch?v=7OAoN9VlYCg)
 
 ---
 
+## **📦 Installation**
 
-## **📦 Installation**  
+### **Using npm**
 
-### **Using npm**  
 ```sh
 npm install react-native-splash-view
 ```
 
-### **Using yarn**  
+### **Using yarn**
+
 ```sh
 yarn add react-native-splash-view
 ```
 
 ---
 
-## **🛠️ Setup Instructions**  
+## **🛠️ Setup Instructions**
 
-### **📱 iOS Setup**  
-1️⃣ Install CocoaPods dependencies:  
+### **📱 iOS Setup**
+
+1️⃣ Install CocoaPods dependencies:
+
 ```sh
 cd ios && pod install --repo-update && cd ..
 ```
-2️⃣ Ensure `SplashView` is correctly linked.  
 
-3️⃣ **Create a Storyboard for Splash Screen**:  
-- Open **Xcode** and go to the **LaunchScreen.storyboard** file.  
-- Ensure the **Storyboard Name** is set as `LaunchScreen`.  
-- This will be used as the splash screen when the app starts.  
+2️⃣ Ensure `SplashView` is correctly linked.
 
-4️⃣ **Modify `AppDelegate`** to show the splash screen programmatically:  
-### If you are using swift update AppDelegate.swift 
+3️⃣ **Create a Storyboard for Splash Screen**:
+
+- Open **Xcode** and go to the **LaunchScreen.storyboard** file.
+- Ensure the **Storyboard Name** is set as `LaunchScreen`.
+- This will be used as the splash screen when the app starts.
+
+4️⃣ **Modify `AppDelegate`** to show the splash screen programmatically:
+
+### If you are using swift update AppDelegate.swift
+
 ```swift
 import UIKit
 
@@ -64,9 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        
+
         showSplashScreen() // Call the method to display the splash screen
-        
+
         return true
     }
 
@@ -83,7 +90,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 ```
-### If you are using Obj C update AppDelegate.m or AppDelegate.mm 
+
+### If you are using Obj C update AppDelegate.m or AppDelegate.mm
+
 ```objc
 
 @implementation AppDelegate
@@ -94,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   self.initialProps = @{};
 
   [self showSplashScreen]; // Call the method to display the splash screen
- 
+
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
@@ -109,12 +118,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 ```
+
 ---
 
-### **🤖 Android Setup**  
+### **🤖 Android Setup**
 
-#### **1️⃣ Create `launch_screen.xml` for Splash Screen**  
-Create the file **`android/app/src/main/res/layout/launch_screen.xml`** as per requirement:  
+#### **1️⃣ Create `launch_screen.xml` for Splash Screen**
+
+Create the file **`android/app/src/main/res/layout/launch_screen.xml`** as per requirement:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -132,8 +143,9 @@ Create the file **`android/app/src/main/res/layout/launch_screen.xml`** as per r
 </FrameLayout>
 ```
 
-#### **2️⃣ Optionally, Define a Custom Theme**  
-You can specify a theme in `android/app/src/main/res/values/styles.xml` and style name should be `SplashViewTheme`. 
+#### **2️⃣ Optionally, Define a Custom Theme**
+
+You can specify a theme in `android/app/src/main/res/values/styles.xml` and style name should be `SplashViewTheme`.
 
 ```xml
 <resources>
@@ -144,8 +156,9 @@ You can specify a theme in `android/app/src/main/res/values/styles.xml` and styl
 </resources>
 ```
 
-#### **3️⃣ Modify `MainActivity.kt` to Show the Splash Screen**  
-Update **`MainActivity.kt`** to display the splash screen on launch:  
+#### **3️⃣ Modify `MainActivity.kt` to Show the Splash Screen**
+
+Update **`MainActivity.kt`** to display the splash screen on launch:
 
 ```kotlin
 package com.example
@@ -157,52 +170,55 @@ import com.splashview.SplashView // <-- Add this
 class MainActivity : ReactActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        SplashView.showSplashView(this) // Show the splash screen
         super.onCreate(savedInstanceState)
+        SplashView.showSplashView(this) // Show the splash screen
     }
 }
 ```
 
 ---
 
-## **🚀 Usage**  
+## **🚀 Usage**
 
-### **Basic Example**  
+### **Basic Example**
+
 ```tsx
 import { hideSplash, showSplash } from 'react-native-splash-view';
-
 
 showSplash(); // Show the splash screen (If you don't want to start it from native side)
 
 useEffect(() => {
-    setTimeout(() => {
-      hideSplash(); // Hide after some time
-    }, 5000);
+  setTimeout(() => {
+    hideSplash(); // Hide after some time
+  }, 5000);
 }, []);
 ```
 
 ---
 
-## **⚙️ API**  
+## **⚙️ API**
 
-| Method          | Description                        |
-|----------------|----------------------------------|
-| `showSplash()`  | Shows the splash screen   |
-| `hideSplash()`  | Hides the splash screen   |
+| Method         | Description             |
+| -------------- | ----------------------- |
+| `showSplash()` | Shows the splash screen |
+| `hideSplash()` | Hides the splash screen |
 
 ---
 
-## **🐞 Troubleshooting**  
+## **🐞 Troubleshooting**
 
-### **1️⃣ Cannot find `SplashView` in Pods folder (iOS)**  
+### **1️⃣ Cannot find `SplashView` in Pods folder (iOS)**
 
-Then run:  
+Then run:
+
 ```sh
 cd ios && pod install --repo-update && cd ..
 ```
 
-### **3️⃣ `SplashView` not found in `MainActivity.kt` (Android)**  
-Ensure your package is correctly linked. Run the following:  
+### **3️⃣ `SplashView` not found in `MainActivity.kt` (Android)**
+
+Ensure your package is correctly linked. Run the following:
+
 ```sh
 cd android && ./gradlew clean && cd ..
 npx react-native run-android
@@ -258,13 +274,15 @@ If you're using **React Native 0.75.x or below**, you may face issues with `Even
    This will apply the patch and fix issues related to **React Native 0.75.x and below**.
 
 ---
-## **💡 Contributing**  
-Feel free to open issues and pull requests! Contributions are welcome.  
+
+## **💡 Contributing**
+
+Feel free to open issues and pull requests! Contributions are welcome.
 
 ---
 
-## **📜 License**  
-This project is licensed under the **MIT License**.  
+## **📜 License**
+
+This project is licensed under the **MIT License**.
 
 ---
-
