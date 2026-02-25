@@ -11,12 +11,13 @@ import android.view.WindowManager
 
 object SplashView {
   private var splashDialog: Dialog? = null
-
+  private var activityRef: java.lang.ref.WeakReference<Any>? = null
   fun showSplashView(activity: Activity) {
     if (activity.isFinishing || activity.isDestroyed) {
       println("Skipping showSplash: Activity is not ready.")
       return
     }
+    activityRef = java.lang.ref.WeakReference(activity)
 
     activity.runOnUiThread {
       if (splashDialog?.isShowing == true) return@runOnUiThread
@@ -57,7 +58,29 @@ object SplashView {
 
 
   fun hideSplashView() {
-    splashDialog?.takeIf { it.isShowing }?.dismiss()
-    splashDialog = null
+    val activity = activityRef?.get() as? Activity
+
+    if (activity == null) {
+      splashDialog = null
+      activityRef = null
+      return
+    }
+
+    activity.runOnUiThread {
+      try {
+        splashDialog?.let { dialog ->
+          val decorView = dialog.window?.decorView
+
+          if (dialog.isShowing && decorView?.isAttachedToWindow == true) {
+            dialog.dismiss()
+          }
+        }
+      } catch (e: Exception) {
+        // Safe guard — prevent crash in rare edge cases
+      } finally {
+        splashDialog = null
+        activityRef = null
+      }
+    }
   }
 }
