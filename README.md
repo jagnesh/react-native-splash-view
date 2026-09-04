@@ -144,9 +144,9 @@ You can specify a theme in `android/app/src/main/res/values/styles.xml` and styl
 </resources>
 ```
 
-#### **3️⃣ Modify `MainActivity.kt` to Show the Splash Screen**  
-Update **`MainActivity.kt`** to display the splash screen on launch:  
+#### **3️⃣ Modify `MainActivity` to Show the Splash Screen**  
 
+### If you are using Kotlin update MainActivity.kt 
 ```kotlin
 package com.example
 
@@ -159,6 +159,24 @@ class MainActivity : ReactActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SplashView.showSplashView(this) // Show the splash screen
+    }
+}
+```
+
+### If you are using Java update MainActivity.java 
+```java
+package com.example;
+
+import android.os.Bundle; // <-- Add this
+import com.facebook.react.ReactActivity;
+import com.splashview.SplashView; // <-- Add this
+
+public class MainActivity extends ReactActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        SplashView.INSTANCE.showSplashView(this); // Show the splash screen
     }
 }
 ```
