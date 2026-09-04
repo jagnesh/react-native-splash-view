@@ -10,7 +10,7 @@ class SplashViewModuleNew(reactContext: ReactApplicationContext) :
   override fun getName() = NAME
 
   override fun showSplash() {
-    currentActivity?.let { SplashView.showSplashView(it) }
+    getCurrentActivity()?.let { SplashView.showSplashView(it) }
   }
 
   override fun hideSplash() {
